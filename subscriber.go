@@ -189,6 +189,10 @@ func (s Subscriber) handleEvent(d amqp.Delivery, dataType interface{}) (ev Event
 		ctx = before(ctx, &d)
 	}
 	ev.Context = ctx
+
+	if d.ContentType == "" {
+		d.ContentType = s.opts.msgOpts.defaultContentType
+	}
 	ev.Delivery = d
 
 	codec, ok := codecs.Register.Get(d.ContentType)
