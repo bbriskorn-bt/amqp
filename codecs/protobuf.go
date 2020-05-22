@@ -3,7 +3,7 @@ package codecs
 import (
 	"errors"
 
-	"github.com/gogo/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 )
 
 var NotProtoMessage = errors.New("not proto message")
